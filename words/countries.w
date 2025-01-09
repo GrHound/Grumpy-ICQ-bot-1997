@@ -1,0 +1,12 @@
+France
+Germany
+Korea
+Japan
+China
+Italy
+USA
+UK
+Poland
+Sweden
+Canada
+Australia

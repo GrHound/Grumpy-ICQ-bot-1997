@@ -1,0 +1,5 @@
+foreach f ( `cat d.d | tr '\012' ' '` )
+    echo $f
+    tail +2 $f >! tmp.tmp
+    \mv tmp.tmp $f
+end
