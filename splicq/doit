@@ -1,0 +1,5 @@
+#!/bin/bash
+
+www_grumpy -n www.ai.rug.nl/~lambert/overview.html \
+           -o www.ai.rug.nl/~lambert \
+           -p 8080                 

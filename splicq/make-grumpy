@@ -1,0 +1,23 @@
+#
+echo "the calculator"
+gcc -c calculator.c
+echo "the splotch"
+gcc -c splotch.c 
+echo "the sock_comm"
+gcc -c sock_comm.c
+echo "the www_grumpy"
+gcc -c www_grumpy.c -DOLD_URL='"www.nici.kun.nl"' \
+                    -DNEW_URL='"www.cogsci.kun.nl"' \
+                    -DHTTP_PORT=8080 \
+                    -DCATCHER_LOG='"grumpy.log"'
+
+#
+echo "THE WEB VERSION OF GRUMPY"
+gcc splotch.o calculator.o -lm sock_comm.o www_grumpy.o \
+       -lm -o www_grumpy
+       
+echo "THE STANDALONE VERSION OF SPLOTCH/GRUMPY"
+gcc -c -DSTANDALONE -DSILENT splotch.c 
+#gcc -c -DSTANDALONE splotch.c 
+gcc splotch.o calculator.o -lm -o grumpy 
+        

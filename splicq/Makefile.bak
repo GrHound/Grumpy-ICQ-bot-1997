@@ -1,0 +1,52 @@
+OLD_URL = '"www.nici.kun.nl"'
+NEW_URL = '"www.cogsci.kun.nl"'
+HTTP_PORT = 80
+CATCHER_LOG = '"catcher.log"'
+
+#
+# for a HP, uncomment the next line
+#
+HP_FLAGS = -D_HP_
+#
+
+#
+# for IBM RS-6000, uncomment the next line
+#
+IBM_FLAGS = "-DFD_SETSIZE=1024"
+
+
+#
+# for Sun Solaris, uncomment the next line
+#
+#LINK_THIS = -lsocket -lnsl
+
+#
+# cc compiler settings
+#
+CC = cc
+CFLAGS = -Aa -O $(HP_FLAGS) $(IBM_FLAGS)\
+	-DOLD_URL=$(OLD_URL)\
+	-DNEW_URL=$(NEW_URL)\
+	-DHTTP_PORT=$(HTTP_PORT)\
+	-DCATCHER_LOG=$(CATCHER_LOG)
+
+
+#
+# GNU compiler settings
+#CC = gcc
+#CFLAGS = -pedantic -Wall -O $(HP_FLAGS)\
+#	-DOLD_URL=$(OLD_URL)\
+#	-DNEW_URL=$(NEW_URL)\
+#	-DHTTP_PORT=$(HTTP_PORT)\
+#	-DCATCHER_LOG=$(CATCHER_LOG)
+#
+############### below this line no editing should be necessary
+
+TARGETS = www_catcher
+all: $(TARGETS)
+
+www_catcher: sock_comm.o www_catcher.o
+	$(CC) sock_comm.o www_catcher.o -o $@ $(LINK_THIS)
+
+clean:
+	rm -f *.o $(TARGETS)
