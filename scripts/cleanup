@@ -1,0 +1,10 @@
+#!/bin/csh
+cd /home/splotch/public_html/logs
+foreach f ( *.log)
+    chmod a+r *.log
+    set n = `ls -l $f | awk '/.*/ {print $5}'`
+    if ( "$n" == 0 ) then
+        echo "Removed empty $f"
+        \rm -f $f
+    endif
+end
