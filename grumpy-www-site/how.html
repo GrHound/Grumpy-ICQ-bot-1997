@@ -1,0 +1,152 @@
+<html>
+<head>
+<title> The inner workings of Grumpy</title>
+</head>
+<body bgcolor=white>
+<center>
+<a href="index.html"><img src="blueface-anim.gif" border=0></a>
+</center>
+<h1> The inner workings of Grumpy </h1>
+<p>
+How does it work? Like similar well-known chatterbots 
+<a href="http://www.botspot.com/search/s-chat.htm">
+(Eliza, Julia, Parry),</a>
+Grumpy works on the basis of keyword matching. The basic framework was
+provided by Duane Field's 
+<a href="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/areas/classics/eliza/splotch/">
+"Splotch"
+</a>, which was embedded into 
+the <a href="http://micq.maesoft.net/menu.html">MICQ</a>
+ICQ client. However, the cognitive architecture of Grumpy has evolved
+beyond basic template matching. There are a number of basic components.
+
+<h2> Basics</h2>
+
+The main part of this code is based largely on Splotch.
+<ul>
+<li> Nasty word rejection
+<li> Normalisation, spelling error correction
+<li> Template matching
+<li> Response generation, using a recursive structure of phrase slots.
+</ul>
+
+<h2> Functional Extensions added at <a href="http://hwr.nici.kun.nl/">NICI</a> </h2>
+
+<ul>
+<li> Live internal procedure invocation 
+          <ul>
+           <li>  e.g., "shut up" really has an effect: 
+                 it resets the current 'brain state', i.e. the node with
+                 the highest activation at that time
+           <li>  there is a simple embedded calculator for numbers
+                (no equations, yet, because this would mean that the 
+                life time of variables and equations must be considered, 
+                and Grumpy would get modal instead of non-modal, as he is now)
+           <li>  human input phrases may be used again later. 
+                Which means that, for 
+                instance, unrecognized Spanish input phrases may become a 
+                response at a later time if there is Spanish input (this 
+                has nothing to do with really learning Spanish).
+          </ul>
+<li> Live external procedure invocation 
+          <ul>
+          <li> web search, 
+          <li> <a href="http://www.cogsci.princeton.edu/~wn/w3wn.html">
+               WordNet
+               </a>-based string analysis
+          </ul>
+
+<li> Input string layout and pattern analysis
+
+<li> Dialog partner database maintenance. Grumpy keeps a brain state for each human client. 
+</ul>
+
+<h2> Cognitive Extensions added at NICI </h2>
+
+The major extension to the standard matching scheme such as Eliza is
+the use of an Interactive Activation model of topic excitation and 
+response inhibition. Keywords activate a topic, but responses just fired
+should be postponed as long as possible. There are 'nodes' for topics and
+for responses. A response which has just fired is inhibited and slowly
+increases its probability of firing according to a simple leaky integrator
+or RC-filter unit transfer function.
+
+<ul>
+<li> Keywords lead to excitation of the related topic
+<li> Responses lead to inhibition of the just fired response
+<li> Grumpy has a notion of story telling, but not by means of a
+     hard-coded list of story components, just the probability of 
+     the next component of an episode is high, earlier parts are
+     inhibited strongly, but a part may be skipped accidentally and
+     appear again later in the sequence.
+</ul>
+
+<h2>Research</h2>
+<p>
+To researchers in artificial intelligence it is frustrating to see
+that the acceptability of such chatbots is determined more by the
+raw database (containing current topics, buzzwords, jargon, irc or icq 
+lifestyle rules) than by 'real intelligence'. A chatbot knowing a lot about 
+recent TV series like 'Friends' or 'E.R' will be considered more acceptable 
+as a dialog partner than a bot which can play chess, 
+is able to detect patterns in sentences
+like string reversals, repetitions, predict the next number in numerical 
+sequences etc. Grumpy cannot do all that nor
+does he know much about fancy current topics, but already his vocabulary
+consists of 27000 lines of text. So if he seems dull, there is the slight 
+possibility you have to blame it on yourself, because you cannot tap his 
+<a href="brain-state.html">'brain'</a>.
+In his current status, Grumpy exchanges 12-14
+question &amp; answer cycles per human, on average.
+Some people have enjoyed themselves in <a href="statistics.html">
+hundreds of Q&amp;A cycles</a>. 
+
+<h2>Beyond Grumpy</h2>
+
+Grumpy is not a <a href="http://cogsci.ucsd.edu/~asaygin/tt/ttest.html">
+Turing test</a> chatbot. In fact, you are supposed to know he is a bot.
+Grumpy's goal is to talk with you as long as both enjoy it. An interesting
+concept in this respect is <b>"the longest meaningful sequence"</b>. 
+This is for a single session the longest sequence of sentences in the
+dialog that human observers would rate as intelligent conversation. 
+Using machine-learning techniques, one may be able to optimize the
+length of the longest meaningful Q&amp;A sequence in the long term, provided
+there is enough training data.
+This means that for a given cognitive architecture, the asymptote of
+the learning curve can be determined: the point where the performance
+does not improve anymore. This means that new functionality must be added
+to the system if one would like to improve the suggestion of intelligence
+that the system makes. In fact it is already known (conjectured) what is
+needed at the high levels: We need powerful methods of making analogies
+<a href="http://www.psych.indiana.edu/cogsci/hofstadter.html">(Hofstadter)</a>.
+Some of us believe this can be done by computers, including neural networks
+and other forms of geometrical computing. But there are also some mysticists
+who think that Newtonian mechanics has been explored exhaustively and that
+quantum computing is necessary 
+<a href="http://psyche.cs.monash.edu.au/v2/psyche-2-06-moravec.html">
+(Penrose)</a>. As for me, my background makes me believe that the
+brain consists of 10<sup>11</sup> neurons, which act as Na<sup>+</sup>/K<sup>+</sup> 
+pumps for immediate information exchange and Ca<sup>++</sup>/Mg<sup>++</sup> 
+pumps for long-term storage (Hebbian learning). And that sounds pretty 
+Newtonian to me...
+
+
+<p>
+Have fun!
+
+<h2>Availability</h2>
+
+This is just a sidetrack of our research. The dialog texts are used for 
+training Grumpy to respond better in the future, using 
+<a href="http://leep.lis.uiuc.edu/spring98/lis329/links.html">
+Information Retrieval</a>
+methods. The system consists of C programs and Unix scripts, and is 
+not available at the moment.
+
+<hr>
+Copyright &#169 <a href="mailto:schomaker@nici.kun.nl">Lambert Schomaker</a>, 2000
+<p>
+<img src="/cgi-bin/Count.cgi?cache=F&expires=0&ft=2&frgb=000000&dd=E|df=splotch-how.dat">
+
+</body>
+</html>

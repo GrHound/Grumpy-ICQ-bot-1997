@@ -1,0 +1,98 @@
+<html>
+<head>
+<title> The inner workings of Grumpy</title>
+</head>
+<body bgcolor=white>
+<center>
+<a href="index.html"><img src="blueface-anim.gif" border=0></a>
+</center>
+<h1> The inner workings of Grumpy </h1>
+<p>
+How does it work? Like similar well-known chatterbots 
+<a href="http://www.botspot.com/search/s-chat.htm">
+(Eliza, Julia, Parry),</a>
+Grumpy works on the basis of keyword matching. The basic framework was
+provided by Duane Field's 
+<a href="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/areas/classics/eliza/splotch/">
+"Splotch"
+</a>, which was embedded into 
+the <a href="http://micq.maesoft.net/menu.html">MICQ</a>
+ICQ client. However, the cognitive architecture of Grumpy has evolved
+beyond basic template matching. There are a number of basic components.
+
+<h2> Basics</h2>
+
+The main part of this code is based largely on Splotch.
+<ul>
+<li> Nasty word rejection
+<li> Normalisation, spelling error correction
+<li> Template matching
+<li> Response generation, using a recursive structure of phrase slots.
+</ul>
+
+<h2> Functional Extensions added at <a href="http://hwr.nici.kun.nl/">NICI</a> </h2>
+
+<ul>
+<li> Live internal procedure invocation 
+          <ul>
+           <li>  e.g., "shut up" really has an effect: 
+                 it resets the current 'brain state' or node activations
+           <li>  there is a simple embedded calculator
+           <li>  human phrases may be re-used later
+          </ul>
+<li> Live external procedure invocation 
+          <ul>
+          <li> web search, 
+          <li> <a href="http://www.cogsci.princeton.edu/~wn/w3wn.html">
+               WordNet
+               </a>-based string analysis
+          </ul>
+
+<li> Dialog partner database maintenance. Grumpy keeps a brain state for each human client. 
+</ul>
+
+<h2> Cognitive Extensions added at NICI </h2>
+
+The major extention to the standard matching scheme such as Eliza is
+the use of an Interactive Activation model of topic excitation and 
+response inhibition. Keywords activate a topic, but responses just fired
+should be postponed as long as possible. There are 'nodes' for topics and
+for responses. A response which has just fired is inhibited and slowly
+increases its probability of firing according to a simple leaky integrator
+or RC-filter unit transfer function.
+
+<ul>
+<li> Keywords lead to excitation of the related topic
+<li> Responses lead to inhibition of the just fired response
+<li> Grumpy has a notion of story telling, but not by means of a
+     hard-coded list of story components, just the probability of 
+     the next component of an episoded is high, earlier parts are
+     inhibited strongly, but a part may be skipped accidentally and
+     reappear later in the sequence.
+</ul>
+
+<h2>Research</h2>
+<p>
+To researchers in artificial intelligence it is frustrating to see
+that the acceptability of such chatbots is determined more by the
+raw database (containing current topics, buzwords, jargon, irc or icq 
+lifestyle rules) than by 'real intelligence'. A chatbot knowing a lot about 
+recent TV series like 'Friends' or 'E.R' will be considered more acceptable 
+as a dialog partner than a bot which can play chess, 
+detect patterns in sentences,
+like string reversals, repetitions, numerical sequences etc. Grumpy
+does not know much about current topics, but already his vocabulary
+consists of 27000 lines of text. So if he seems dull, there is the possibility
+you have to blame it on yourself, because you cannot tap his 
+<a href="brain-state.html">'brain'</a>.
+Some people have enjoyed themselves in more than 100 Q&amp;A cycles.
+<p>
+Have fun!
+
+<hr>
+<a href="mailto:schomaker@nici.kun.nl">schomaker@nici.kun.nl</a>
+<p>
+<img src="/cgi-bin/Count.cgi?ft=2&frgb=000000&dd=E|df=splotch-how.dat">
+
+</body>
+</html>
