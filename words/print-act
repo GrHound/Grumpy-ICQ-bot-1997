@@ -1,0 +1,9 @@
+#!/bin/tcsh
+#
+set n = $1
+      if ( -f .Act-$n ) then
+         abut .Act-$n $1
+      else
+         cat $1
+      endif
+
