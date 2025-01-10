@@ -1,0 +1,2 @@
+#define LOGDIR "logs"
+
