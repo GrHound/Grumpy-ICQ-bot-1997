@@ -111,7 +111,7 @@ words/                The words that the bot knows. An associated dot file .Act-
   you_forgot.w
 
 phrases/         Precooked, longer answers
-  capitalism.p    [!NOTE] Example entry
+  capitalism.p    >[!NOTE] Example entry
              .phrase
              Adam Smith and J. S. Mill were well aware of the actual and
              possible defects of capitalism. But neither one of them exhibited the 
