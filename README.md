@@ -5,7 +5,7 @@ Grumpy was implemented in 1997 on the basis of the plain bot 'splotch.c' by Duan
 Modifications include: an activation based (leaky-integrator) topicality mechanism to obtain some consistence in the 
 dialog per ICQ user, over sessions. Invocation of terminal-based games (not functioning now). Integration with the ICQ 
 api and mechanism with a UIN per user. Several mechanisms to address extraneous sources such as wordnet, altavista, later 
-google, wikipedia etc. One ICQ use came back 800 times to talk to Grumpy. It is clear that the content and log files are 
+google, wikipedia etc. One ICQ user came back 800 times to talk to Grumpy. It is clear that the content and log files are 
 partly incomprehensible and in any case highly likely to contain non-politically correct fragments coming from the user 
 community 1997-2000. In short: The owner of the repository take no responsibility for inappropriate content. Using decency 
 criteria the user logs were cleaned but norms are in a continuous flux. Also, more innocuously, there will be a lot of technical, 
