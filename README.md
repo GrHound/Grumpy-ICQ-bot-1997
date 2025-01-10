@@ -11,7 +11,7 @@ community 1997-2000. In short: The owner of the repository take no responsibilit
 criteria the user logs were cleaned but norms are in a continuous flux. Also, more innocuously, there will be a lot of technical, 
 nerdy jargon and abbreviations that will be utterly incomprehensible to current computer users.
 
-![Example image](blueface.gif){:height="36px"}
+![Example image](blueface.gif)    This animated gif was used as the face of Grumpy on the web interface.
 
 ________________________________________________________________________________________________________________
 README for Grumpy-v5 - revived partially as standalone (without ICQ)
@@ -146,4 +146,3 @@ episodes/   Even longer narratives
 
 Note: not only words, but also phrases and episodes were subject to the activation likelihood mechanism controlling the random selection.
 
-![Example image](blueface.gif)
