@@ -39,3 +39,98 @@ Grumpy ran on a server at Nijmegen University in the NICI institute.
 One ICQ user came back more than 800 times.
 
 Lambert Schomaker, December 2024
+
+_____________________________________________________________________________________________________________________
+
+Data directories of interest
+
+words/                The words that the bot knows. An associated dot file .Act-{word}.w contains the topicality activation (see example below)
+  about-my-status.w
+            Content (answers):
+                  fine
+                  allright
+                  ok
+                  so-so
+                  pretty good
+                  fine thanks, and you?  
+                  just fine, thanks
+                  I am a bit under the weather
+                  I am bored, actually
+                  perfect
+                  couldn't be better
+                  I'm happy
+                  I'm ok  
+                  I'm fine
+  .Act-about-my-status.w
+                  15
+               0.99
+               0.99
+               0.81
+               0.89
+               0.99
+               0.99
+               0.15
+               0.99
+               0.94
+              -1.43     The answer "perfect" apparently was recently uttered, so its likelihood is pulled down
+               0.97
+               0.99
+               0.54
+               0.99
+               0.97
+
+
+  adjust
+  adj.w
+  affirmative.w
+  aggies.w
+  aggressive.w
+  ai.w
+  alive.w
+  amiga.w
+  angry.w
+  animal.w
+  artificial.w
+  aussie.w
+  bored.w
+  bot.w
+  bye.w
+  canada.w
+   .
+   .
+  yes.w
+  you_forgot.w
+
+phrases/         Precooked, longer answers
+  capitalism.p
+             .phrase
+             Adam Smith and J. S. Mill were well aware of the actual and
+             possible defects of capitalism. But neither one of them exhibited the 
+             quasi-religious nostalgic utopianism of contemporary libertarianism, 
+             nor did they attempt to conflate capitalism with anarchy.
+
+  death-penalty-contra.p
+  death-penalty-pro.p
+  guns-contra.p
+  socialism.p
+
+
+episodes/   Even longer narratives
+   all-dict-words.e
+   eliza.e
+   fairy-tales.e
+   family-puzzles.e
+   injustice.e
+   martial-arts.e
+   smurfs.e
+      .episode 
+         When anyone thinks of communism they think of three names; Stalin, Lenin, 
+         and Marx. The fact that there are three head communism figures leaves us with 
+         a problem; which one was Papa Smurf Modeled after?  Many believe that it was 
+         Karl Marx, the man who developed the idea of socialism. You must admit they 
+         look shockingly alike. 
+
+   topics.e
+
+
+Note: not only words, but also phrases and episodes were subject to the activation likelihood mechanism controlling the random selection.
