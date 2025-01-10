@@ -143,3 +143,5 @@ episodes/   Even longer narratives
 
 
 Note: not only words, but also phrases and episodes were subject to the activation likelihood mechanism controlling the random selection.
+
+![Example image](potfield-example.png)
