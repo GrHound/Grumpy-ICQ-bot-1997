@@ -1,0 +1,2 @@
+#!/bin/csh
+echo "weather: see http://www.met-office.gov.uk/sec3/sec3.html"

@@ -1,0 +1,11 @@
+#!/bin/bash
+grep ':' main.dict \
+    |  tr ':' ' ' \
+    |  tr '/' ' ' \
+    |  tr '!' ' ' \
+    |  tr '&' ' ' \
+    |  tr ' ' '\012' \
+    |  sort \
+    |  uniq \
+    |  perm \
+    |  head -15                              

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while [ 1 ]
+do
+    www_grumpy -n www.ai.rug.nl/~lambert/overview.html \
+           -o www.ai.rug.nl/~lambert \
+           -p 8080                 
+    sleep 1
+done

@@ -1,0 +1,49 @@
+#!/bin/csh
+set nw = 0
+set synw = 0
+set nunk = 0
+while ( "$1" != "" ) 
+     echo "'$1': "
+     if ( "$1" != " " ) then
+         foreach w ( $1 ) 
+            if ( "$w" == "meta" ) then
+                echo "burp    (sorry)"
+                exit
+            endif
+            set list = `grep "^$w " wordnet.categ`
+            if( "$list" == "") then
+                  echo "$w is an unknown term, "
+                  @ nunk += 1
+            else
+              shift list
+              set i = 0
+              foreach categ ( $list ) 
+                 @ i += 1
+              end
+	      @ nw += 1
+              if ( $i > 1) then
+                 foreach categ ( $list ) 
+                    echo -n "$w as $categ? "
+                 end
+                 echo ", "
+              else
+                 echo "$w=$categ, "
+                 @ synw += 1
+              endif
+            endif
+         end
+     endif
+     shift
+end
+#
+if ( $nw > 0 ) then
+   if ( $nunk == 0 ) then
+      if ( $synw == $nw ) then
+         echo " (syntax seems ok)?"
+      else
+        echo "??"
+      endif
+   else
+      echo '???'
+   endif
+endif

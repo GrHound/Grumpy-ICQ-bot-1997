@@ -1,0 +1,44 @@
+#!/bin/bash
+filter() {
+ cat | tr "\047" ' ' \
+     | sed 's/the / /' \
+     | sed 's/^I / /' \
+     | sed 's/^is / /' \
+     | sed 's/ is / /' \
+     | sed 's/ am / /' \
+     | sed 's/^where / /' \
+     | sed 's/^what / /' \
+     | sed 's/^when / /' \
+     | sed 's/^whom / /' \
+     | sed 's/^who / /' \
+     | sed 's/^are / /' \
+     | sed 's/^it / /' \
+     | sed 's/^why / /' \
+     | sed 's/^that / /' \
+     | tr '?' ' ' 
+}
+#
+item=`echo "$1" | filter | strlens+str | sort -n | awk '{print $2}' | tail -1`
+#echo "$1" | filter | strlens+str | sort -n 
+#
+if [ "$item" != "" ]; then
+  lynx -dump "http://en.wikipedia.org/wiki/$item" > /tmp/word-association.txt
+  cat /tmp/word-association.txt \
+    | sed 's/From Wikipedia, the free encyclopedia/=Wikipedia=/' \
+    | sed 's/^.*=Wikipedia=//' \
+    | sed 's/may wish to change .*//' \
+    | grep -v '\[' \
+    | tr -s '\012' ' ' \
+    | tr -s ' ' '\012' \
+    | grep -v http \
+    | head -40 | while read line
+  do
+    if [ "$line" == "Views" ]; then
+       break
+    fi
+    echo "$line"
+  done
+  echo " ..."
+else
+  echo "uhm..."
+fi

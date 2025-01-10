@@ -1,0 +1,27 @@
+#!/bin/csh
+set root = /ext/root/schomake/exp/splotch/v2
+#
+setenv HTMLCHEK  /ext/root/schomake/exp/splotch/v2/dehtml
+#
+if ( "$1" != "" && "$1" != " " ) then
+   \cd $root >& /dev/null
+   echo "$1 $2 $3 $4 $5 $6 $7 $8" >> $root/associate.log
+   cronfetch/wwwassoc "$1 $2 $3 $4 $5 $6 $7 $8" \
+             | grep -iv '<title>' \
+             | $HTMLCHEK/dehtml.sh \
+             | grep -v '^Organization' \
+             | grep -v '^From        ' \
+             | grep -v '^Date        ' \
+             | grep -v '^Newsgroups  ' \
+             | grep -v '^Message-ID  ' \
+             | sed  's/^.*wrote://' \
+             | sed  's/Re://' \
+             | sed  's/RE://' \
+             | sed 's/@/ at /' \
+             | grep -v '^>' \
+             | tr -s '\012' \
+             | grep -v '^References  ' \
+             | nroff \
+             | tr -s '\012'| tr -s '\040'
+   echo ""
+endif

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /home/schomake/src/c/misc/splotch-grumpy-icq/splicq-v4
+#
+dest="/data/APS/projects/web/NA/KdK/Boek-7823/Overslag/Grumpy/brain-state-last.html"
+/bin/tcsh html-act > $dest
+chmod a+r $dest

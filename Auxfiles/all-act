@@ -1,0 +1,15 @@
+#!/bin/tcsh
+#
+foreach d ( words phrases episodes )
+   \rm -f d.d
+   touch d.d
+   foreach f ( $d/*.? ) 
+      set n = `basename $f`
+      if ( -f $d/.Act-$n ) then
+         echo "$d/$n"
+         abut $d/.Act-$n $f >> d.d
+         abut $d/.Act-$n $f 
+      endif
+   end
+   sort -n d.d
+end

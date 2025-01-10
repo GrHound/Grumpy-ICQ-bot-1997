@@ -1,0 +1,54 @@
+#!/bin/tcsh
+#
+echo '<html>'
+echo '<head>'
+echo "<title>Grumpy's brain state</title>"
+echo '<META http-equiv="EXPIRES" CONTENT="TUES, 31 DEC 1996 12:00:00 GMT">'
+echo '</head>'
+echo '<body bgcolor=white>'
+echo '<center>'
+echo '<table border=0>'
+echo '<tr>'
+echo '<td>   <a href="index.html"><img src="blueface-brain.gif" alt="image of Grumpy with hole in head exposing frontal cortex of the brain" border=0>'
+echo '</a>'
+echo '</p></table>'
+echo '</center>'
+echo "<h1>Grumpy's brain state</h1>"
+echo '<p>'
+echo '<table border=3>'
+set lst = `\ls -1t */.Act*.[wpe]`
+echo "<tr>"
+echo "<th><font color=blue>Topic</font></th>"
+#echo "<th><font color=blue>Date/Time<sub>act.</sub></font></th>"
+echo "<th><font color=blue>N<sub>inh.</sub></font></th>"
+echo "<th colspan=10><font color=blue>Response<sub>act.</sub></font></th>"
+echo "<th>.<th>..<th>..."
+#
+##alias colex /other/kunhp1/hxt/software/stat/bin/linux/colex
+##alias wc /usr/bin/wc
+##alias tail /usr/bin/tail
+#
+foreach f ( $lst )
+      set n = `basename $f | sed 's/.Act-//' | sed 's/\.[wpe]//g'`
+         set dt = `\ls -l $f | colex  6-8 | tr '\011' ' '`
+#         echo -n "<tr><th>$n</th><td><font color=green>$dt</font><td><font color=red> "
+         echo -n "<tr><th><font size=-1>$n</th><td><font color=red> "
+         tail -n +2 $f | grep '\-' | wc -l | tr '\012' ' '
+         echo -n "</font><td><font size=-1> "
+         tail -n +2 $f | head -50 | tr '\012' '~' | sed 's/~/<td>/g' \
+                    | sed 's/-/<font color=red>-/g' \
+                    | sed 's/<td>/<td><font size=-1>/g'
+         echo " "
+end
+echo '</table>'
+echo '<p>Brain state as of '
+date
+echo '<p><hr><p>'
+###echo '<img src="/cgi-bin/Count.cgi?ft=2&frgb=000000&dd=E|df=splotch-brain.dat">'
+echo '</body>'
+echo '</html>'
+#
+foreach f ( $lst )
+    /home/schomake/src/c/misc/splotch-grumpy-icq/splicq-v2/splotch-relax 0.1 $f  >& /dev/null
+    /bin/sleep 1 >& /dev/null
+end

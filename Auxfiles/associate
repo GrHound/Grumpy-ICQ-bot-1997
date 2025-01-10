@@ -1,0 +1,38 @@
+#!/bin/csh
+set firstarg = "$1"
+set root = /home/schomake/src/c/misc/splotch-grumpy-icq/splicq-v4
+#
+cat ./logs/*.log ./splotch/public_html/logs/*.log \
+               | grep 'HUM:' \
+               | sed 's/^.*HUM://' \
+               | sed 's/^.*)//' >! /tmp/associate.log
+#
+\rm /tmp/associate.tmp >& /dev/null
+touch /tmp/associate.tmp
+set i = 1
+while ( "$argv" != "" )
+    foreach a ( $argv[1] ) 
+      set n = `echo "$a" | wc -c`
+      if ( $n > 2 ) then
+        cat /tmp/associate.log  words/*.w phrases/*.p episodes/*.e \
+            | grep --word-regexp $a | sed 's/%/uhm/g' \
+            | sort -u | perm | tail -1 >> /tmp/associate.tmp
+      endif
+      @ i += 1
+    end
+    shift argv >& /dev/null
+    if ( $i > 3 ) then
+       break
+    endif
+end
+if ( -s /tmp/associate.tmp ) then
+  set answ = `head -3 /tmp/associate.tmp`
+  if ( "$answ" != "$firstarg" ) then
+    echo "$answ"
+  else
+    echo "???"
+  endif
+else
+  echo "??"
+endif
+exit 0

@@ -1,0 +1,98 @@
+#
+if ( "$1" == "" ) then
+    immortal clean
+    while(1)
+	do-micq
+	sleep 5
+        if ( -f kill-micq ) then
+             exit
+        endif
+    end
+else
+    ps ax | grep immortal | grep -v grep | grep -v $1
+    ps ax | grep micq | grep -v grep
+    set pid = `ps ax | grep immortal | grep -v grep | grep -v $1 | awk '{print $1}'`
+    set pidd = `ps ax | grep do-micq | grep -v grep | awk '{print $1}'`
+    set pidm = `ps ax | grep micq | grep -v grep | grep -v do-micq | awk '{print $1}'`
+    @ pid += 0
+    @ pidd += 0
+    @ pidm += 0
+#
+    switch ( "$1" )
+    case clean:
+        \rm -f kill-micq
+        \rm -f stop-micq
+        breaksw
+    case status:
+        if ( $pid != 0) then
+           echo "immortal script probably at pid=$pid"
+        else
+           echo "immortal script not running"
+        endif
+        if ( $pidd != 0) then
+           echo "do-micq script probably at pid=$pidd"
+        else
+           echo "do-micq script not running"
+        endif
+        if ( $pidm != 0) then
+           echo "micq executable probably at pid=$pidm"
+        else
+           echo "micq executable not running"
+        endif
+        breaksw
+    case start:
+        if ( -f stop-micq || $pid != 0 ) then
+           echo "The immortal already lives?"
+           echo "Do: immortal resume after a stop"
+           echo "Do: immortal kill and immortal start to restart"
+           exit
+        endif
+        echo Starting the immortal
+        immortal clean
+        nohup immortal >& /dev/null &
+	breaksw
+    case stop:
+        echo Temporarily stopping the immortal by stopping micq $pidm
+        touch stop-micq
+        killall -9 micq
+        breaksw
+    case kill:
+        echo Finally killing the immortal pid=$pid do-micq=$pidd micq=$pidm
+        touch kill-micq
+        sleep 1
+        killall -9 micq
+        breaksw
+    case resume:
+        echo Resuming the immortal
+        \rm -f stop-micq
+        breaksw
+    case newfiles:
+        echo Renewing micq
+        \cp -f splicq/micq .
+        if ( -f main.dict.new ) then
+              echo Renewing main.dict
+              \cp main.dict main.dict.old
+              \mv main.dict.new main.dict
+	endif
+        breaksw
+    case update:
+        echo Updating the immortal
+        immortal stop
+        sleep 8
+        immortal newfiles
+        sleep 5
+        immortal resume
+        breaksw
+    case relax:
+        echo Relaxing the .Activities towards 1.0 with alpha 0.1
+        set lst = `ls -1t */.Act*.[wpe]`
+        foreach f ( $lst )
+	  echo $f
+          splotch-relax 0.1 $f
+        end
+        breaksw
+    default:
+	echo "Usage immortal start stop resume kill update status newfiles relax clean"
+        breaksw
+    endsw
+endif

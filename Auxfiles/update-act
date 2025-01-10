@@ -1,0 +1,13 @@
+#!/bin/tcsh
+#
+
+set lst = `\ls -1t */.Act*.[wpe]`
+
+foreach f ( $lst )
+	 echo $f
+         cat $f | stats mean sd | tr '\012' ' ' | tr -s  ' '
+         echo -n " --> "
+         splotch-relax 0.1 $f
+         cat $f | stats mean sd | tr '\012' ' ' | tr -s ' '
+         echo " "
+end
