@@ -11,6 +11,8 @@ community 1997-2000. In short: The owner of the repository take no responsibilit
 criteria the user logs were cleaned but norms are in a continuous flux. Also, more innocuously, there will be a lot of technical, 
 nerdy jargon and abbreviations that will be utterly incomprehensible to current computer users.
 
+![Example image](blueface.gif){:height="36px"}
+
 ________________________________________________________________________________________________________________
 README for Grumpy-v5 - revived partially as standalone (without ICQ)
                        December 2024
