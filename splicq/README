@@ -8,7 +8,6 @@ calculator
 calculator.c
 
 catcher.log
-CHANGELOG
 commands.txt
 
 doit
@@ -29,8 +28,6 @@ splotch-relax
 splotch-relax.c
 splotch.c
 test.c
-TODO
 uin.dat
-WISHLIST
 www_grumpy
 www_grumpy.c
