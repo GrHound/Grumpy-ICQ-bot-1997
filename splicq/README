@@ -25,8 +25,8 @@ sock_comm.c
 sock_comm.h
 splicq.h
 splotch-relax
-splotch-relax.c
-splotch.c
+splotch-relax.c               Tool to cool down topic activations (emotionality) of topics
+splotch.c                     Main source code of the Grumpy bot
 test.c
 uin.dat
 www_grumpy
