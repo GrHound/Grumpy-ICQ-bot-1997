@@ -1,0 +1,23 @@
+This is a list of planned improvements to Micq so you all know what I'm 
+working on and so I don't forget anything. :)
+The order is random I'll add things depending on how I feel at the moment. :)
+
+TCP connections.
+File transfer
+chat
+deamon mode.
+support for scripts
+turn it into a lib for GUI programmers.
+Alter your personal info, partially done.
+Automatically log back in.
+Support for larger contact lists.
+More countries identified.
+ICQ status flags identified
+automatically change to away mode.
+80 column mode for dumb terminals.
+multi-language
+
+There's probably other stuff I forgot.  If you have any ideas let me know 
+and I'll add them to the list.
+
+mds1281@rit.edu
