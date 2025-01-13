@@ -57,7 +57,7 @@ Lambert Schomaker, December 2024
 
 Data directories of interest
 <pre>
-words/                The words that the bot knows. An associated dot file .Act-{word}.w contains the topicality activation (see example below)
+./words/                The words that the bot knows. An associated dot file .Act-{word}.w contains the topicality activation (see example below)
   about-my-status.w
             Content (answers):
                   fine
@@ -92,8 +92,10 @@ words/                The words that the bot knows. An associated dot file .Act-
                0.99
                0.97
 
-
-  adjust
+     .
+     .
+     .
+  adjust.w
   adj.w
   affirmative.w
   aggies.w
@@ -114,7 +116,7 @@ words/                The words that the bot knows. An associated dot file .Act-
   yes.w
   you_forgot.w
 
-phrases/         Precooked, longer answers
+./phrases/         Precooked, longer answers
   capitalism.p    
              .phrase
              Adam Smith and J. S. Mill were well aware of the actual and
@@ -128,7 +130,7 @@ phrases/         Precooked, longer answers
   socialism.p
 
 
-episodes/   Even longer narratives
+./episodes/   Even longer narratives
    all-dict-words.e
    eliza.e
    fairy-tales.e
