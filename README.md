@@ -51,8 +51,6 @@ One ICQ user came back more than 800 times.
 
 Lambert Schomaker, December 2024
 
-_____________________________________________________________________________________________________________________
-
 Data directories of interest
 
 words/                The words that the bot knows. An associated dot file .Act-{word}.w contains the topicality activation (see example below)
