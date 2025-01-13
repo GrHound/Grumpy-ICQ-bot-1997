@@ -56,7 +56,7 @@ One ICQ user came back more than 800 times.
 Lambert Schomaker, December 2024
 
 Data directories of interest
-<code>
+<pre>
 words/                The words that the bot knows. An associated dot file .Act-{word}.w contains the topicality activation (see example below)
   about-my-status.w
             Content (answers):
@@ -146,7 +146,7 @@ episodes/   Even longer narratives
       .
       .
    topics.e
-</code>
+</pre>
 
 Note: not only words, but also phrases and episodes were subject to the activation likelihood mechanism controlling the random selection.
 
