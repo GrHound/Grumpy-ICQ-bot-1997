@@ -42,6 +42,10 @@ Building on Linux, assuming gcc
 4) Start a standalone, non-ICQ session :
    ./splicq/grumpy
 
+   If auxiliary files are needed, they may be found in directory ./Aux-files
+   and be put in the ./grumpy-v5 dir. This was avoided in this GitHub to avoid
+   top-level clutter.
+
 Sessions are logged and the HUMAN entries in the logs are used 
 to spit out future answers. This was obviously dangerous and required
 daily inspection to prevent malign content to be regurgitated by Grumpy.
@@ -52,7 +56,7 @@ One ICQ user came back more than 800 times.
 Lambert Schomaker, December 2024
 
 Data directories of interest
-
+<code>
 words/                The words that the bot knows. An associated dot file .Act-{word}.w contains the topicality activation (see example below)
   about-my-status.w
             Content (answers):
@@ -138,9 +142,11 @@ episodes/   Even longer narratives
          a problem; which one was Papa Smurf Modeled after?  Many believe that it was 
          Karl Marx, the man who developed the idea of socialism. You must admit they 
          look shockingly alike. 
-
+      .
+      .
+      .
    topics.e
-
+</code>
 
 Note: not only words, but also phrases and episodes were subject to the activation likelihood mechanism controlling the random selection.
 
